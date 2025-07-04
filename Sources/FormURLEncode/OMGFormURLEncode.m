@@ -28,7 +28,7 @@ static NSArray *DoQueryMagic(NSString *key, id value) {
         }
     } else if ([value isKindOfClass:[NSArray class]]) {
         for (id nestedValue in value)
-            [parts addObjectsFromArray:DoQueryMagic([NSString stringWithFormat:@"%@[]", key], nestedValue)];
+            [parts addObjectsFromArray:DoQueryMagic([NSString stringWithFormat:@"%@", key], nestedValue)];
     } else if ([value isKindOfClass:[NSSet class]]) {
         for (id obj in [value sortedArrayUsingDescriptors:@[sortDescriptor]])
             [parts addObjectsFromArray:DoQueryMagic(key, obj)];
